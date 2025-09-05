@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package meshtastic;
+
+import "nanopb.proto";
+
+option csharp_namespace = "Meshtastic.Protobufs";
+option go_package = "github.com/meshtastic/go/generated";
+option java_outer_classname = "MeshProtos";
+option java_package = "com.geeksville.mesh";
+option swift_prefix = "";
+option (nanopb_fileopt).include = "<vector>";
+
+message KeyStore {
+    
+    /*
+    * The node id of the remote participant, same as in the nodeDB
+    */
+    uint32 node_id = 1;
+
+    /*
+    * The current local public key for this session.
+    * This will be sent with each double ratchet message.
+    */
+    bytes public_key = 2;
+
+    /*
+    * The current local private key for this session.
+    * This will used to create the Diffie-Hellmann-agreement for advancing the ratchet.
+    */
+    bytes private_key = 3;
+
+    /*
+    * Last received public key of remote node
+    */
+    bytes remote_public_key = 4;
+
+    /*
+    * To save space, we indicate with this flag which next header key is the same as the root key.
+    */
+    bool root_key_is_send_nhk = 5;
+
+    bytes header_key_send = 6;
+
+    bytes next_header_key_send = 7;
+
+    bytes chain_key_send = 8;
+
+    bytes last_header_key_receive = 9;
+
+    bytes header_key_receive = 10;
+
+    bytes next_header_key_receive = 11;
+
+    bytes last_chain_key_receive = 12;
+
+    bytes chain_key_receive = 13;
+
+    int32 last_length_receive = 14;
+
+    int32 current_length_receive = 15;
+
+    int32 current_length_send = 16;
+
+}
+
+message KeyStoreDatabase {
+    /*
+    * A version integer used to invalidate old save files when we make
+    * incompatible changes This integer is set at build time and is private to
+    * NodeDB.cpp in the device code.
+    */
+    uint32 version = 1;
+
+    /*
+    * New lite version of NodeDB to decrease memory footprint
+    */
+    repeated KeyStore sessions = 2 [(nanopb).callback_datatype = 'std::vector<meshtastic_KeyStore, PSallocator<meshtastic_KeyStore>>'];
+}

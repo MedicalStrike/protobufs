@@ -1,0 +1,18 @@
+# options for nanopb
+# https://jpa.kapsi.fi/nanopb/docs/reference.html#proto-file-options
+
+* include:"modules/DoubleRatchet/PSRAMallocator.h"
+
+*KeyStore.public_key max_size:32
+*KeyStore.private_key max_size:32
+*KeyStore.remote_public_key max_size:32
+*KeyStore.header_key_send max_size:32
+*KeyStore.next_header_key_send max_size:32
+*KeyStore.chain_key_send max_size:32
+*KeyStore.last_header_key_receive max_size:32
+*KeyStore.header_key_receive max_size:32
+*KeyStore.next_header_key_receive max_size:32
+*KeyStore.last_chain_key_receive max_size:32
+*KeyStore.chain_key_receive max_size:32
+
+*KeyStoreDatabase.session max_count:200
