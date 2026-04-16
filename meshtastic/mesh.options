@@ -5,6 +5,7 @@
 *id max_size:16 # node id strings
 *public_key max_size:32 # public key
 
+*User.x3dh_shared_key max_size:32 # shared aes key
 *User.long_name max_size:40
 *User.short_name max_size:5
 

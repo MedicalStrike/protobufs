@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package meshtastic;
+
+option csharp_namespace = "Meshtastic.Protobufs";
+option go_package = "github.com/meshtastic/go/generated";
+option java_outer_classname = "X3dhProtos";
+option java_package = "org.meshtastic.proto";
+option swift_prefix = "";
+
+message X3DHMessage {
+    
+    X3DHMessageType type = 1;
+
+    X3DHProtocol continue_protocol = 2;
+
+    /*
+     * Contains one of the payloads specified by x3dh_payload.pb
+     */
+    optional bytes payload = 3;
+}
+
+enum X3DHMessageType {
+     /*
+     * Request pre-key bundle form client or server
+     */
+    REQUEST_BUNDLE = 0;
+
+    /*
+     * Answer with pre-key bundle
+     */
+    RESPONSE_BUNDLE = 1;
+
+    /*
+     * Answer with device id holding client pre-key bundles
+     */
+    EXTERNAL_BUNDLE = 3;
+
+    /*
+     * Initial message containing shared secrets
+     */
+    INITIAL_MESSAGE = 4;
+        
+    /*
+     * Confirming Message to acceptance of shared secrets with follow-up protocol
+     */
+    PROTOCOL_SWITCH = 5;
+
+    /*
+     * Storage request for pre-keys to external server
+     */
+    STORE_BUNDLE = 6;
+
+    /*
+     * Storage request for one-time-pre-keys
+     */
+    STORE_OTK = 7;
+
+    /*
+     * Server request for new one-time-pre-keys from client
+     */
+    REFILL_OTK = 8;
+
+    /*
+     * General error, resets protocol exchange
+     */
+    X3DH_ERROR = 9;
+
+}
+
+/*
+ * Used for determining the post-X3DH-Protocol.
+ * Evaluated when PROTOCOL_SWITCH is set or used for announcing capabilities in INITIAL_MESSAGE
+ */
+enum X3DHProtocol {
+
+    /*
+     * Direct Ecliptic Diffie-Hellman like it is used at the moment, defeats the purpose of X3DH
+     */
+    DIRECT = 0;
+
+    /*
+     * More secure than direct ECDH, but still not recommend by the X3DH documentation
+     */
+    X3DH_SECRET = 1;
+
+    /*
+     * Secure with forward secrecy, but needs additional modules and changes to the base system
+     */
+    DOUBLE_RATCHET = 3;
+}
