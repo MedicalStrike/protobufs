@@ -42,7 +42,7 @@ enum X3DHMessageType {
     INITIAL_MESSAGE = 4;
         
     /*
-     * Confirming Message to acceptance of shared secrets with follow-up protocol
+     * Confirming Message to acceptance of shared secrets with follow-up protocol or protocol upgrade
      */
     PROTOCOL_SWITCH = 5;
 
@@ -75,17 +75,12 @@ enum X3DHMessageType {
 enum X3DHProtocol {
 
     /*
-     * Direct Ecliptic Diffie-Hellman like it is used at the moment, defeats the purpose of X3DH
-     */
-    DIRECT = 0;
-
-    /*
      * More secure than direct ECDH, but still not recommend by the X3DH documentation
      */
-    X3DH_SECRET = 1;
+    X3DH_SECRET = 0;
 
     /*
      * Secure with forward secrecy, but needs additional modules and changes to the base system
      */
-    DOUBLE_RATCHET = 3;
+    DOUBLE_RATCHET = 1;
 }

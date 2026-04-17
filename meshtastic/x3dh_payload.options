@@ -10,6 +10,6 @@
 
 *OneTimePreKeyBundle.one_time_pre_keys        max_count:5
 
-*ExternalBundle.public_key                   max_size:32 fixed_length:true
+*RequestBundle.public_key                   max_size:32 fixed_length:true
 
 *InitialMessage.ephermal_key                 max_size:32 fixed_length:true

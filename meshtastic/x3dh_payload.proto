@@ -58,7 +58,7 @@ message OneTimePreKeyBundle {
     repeated OneTimePreKey one_time_pre_keys = 2;
 }
 
-message ExternalBundle {
+message RequestBundle {
 
     /*
      * Number of the external node holding the key bundle

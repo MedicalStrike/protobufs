@@ -98,6 +98,17 @@ message UserLite {
    * Whether or not the node can be messaged
    */
   optional bool is_unmessagable = 9;
+
+  /*
+   * The shared, 32-byte secret for direct messages, derived from X3DH
+   * Not filled when not including the X3DH-module, therefore taking no storage and being reverse compatible
+   */
+  optional bytes x3dh_shared_key = 10;
+
+  /*
+   * The current state of the X3DH-agreement
+   */
+  optional X3DHState x3dh_state = 11;
 }
 
 message NodeInfoLite {
@@ -299,3 +310,44 @@ message BackupPreferences {
    */
   User owner = 6;
 }
+
+/*
+ * Signals the current state of the X3DH-Agreement
+ */
+ enum X3DHState {
+    /*
+     * X3DH-Agreement has not benn started
+     */
+    
+    X3DH_NOT_STARTED = 0;
+
+    /*
+     * Initial pre-key-bundle requested
+     */
+    BUNDLE_REQUESTED = 1;
+
+    /*
+     * Initial pre-key-bundle sent
+     */
+    BUNDLE_SENT = 2;
+
+    /*
+     * Bundle requested from external server
+     */
+    EXTERNAL_BUNDLE_REQUESTED = 3;
+
+    /*
+     * Pre-key-bundle received
+     */
+    BUNDLE_RECEIVED = 4;
+
+    /*
+     * Initial message sent
+     */
+    INIT_SENT = 5;
+
+    /*
+     * Post-X3DH protocol set, end of X3DH-Agreement
+     */
+    PROTOCOL_SET = 6;
+ }
