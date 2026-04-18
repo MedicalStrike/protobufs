@@ -84,3 +84,44 @@ enum X3DHProtocol {
      */
     DOUBLE_RATCHET = 1;
 }
+
+/*
+ * Signals the current state of the X3DH-Agreement
+ */
+ enum X3DHState {
+    /*
+     * X3DH-Agreement has not benn started
+     */
+    
+    X3DH_NOT_STARTED = 0;
+
+    /*
+     * Initial pre-key-bundle requested
+     */
+    BUNDLE_REQUESTED = 1;
+
+    /*
+     * Initial pre-key-bundle sent
+     */
+    BUNDLE_SENT = 2;
+
+    /*
+     * Bundle requested from external server
+     */
+    EXTERNAL_BUNDLE_REQUESTED = 3;
+
+    /*
+     * Pre-key-bundle received
+     */
+    BUNDLE_RECEIVED = 4;
+
+    /*
+     * Initial message sent
+     */
+    INIT_SENT = 5;
+
+    /*
+     * Post-X3DH protocol set, end of X3DH-Agreement
+     */
+    PROTOCOL_SET = 6;
+ }

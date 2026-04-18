@@ -16,10 +16,15 @@ message OneTimePreKey {
     uint32 id = 1;
 
     /*
+     * Id of node this key was sent to
+     */
+    optional uint32 node_num = 2;
+
+    /*
      * 32-byte Ecliptic (X25519) key
      * Public for device-to-device communication, private for on-device-storage
      */
-    bytes key = 2;
+    bytes key = 3;
 }
 
 message PreKeyBundle {
