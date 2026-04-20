@@ -2,11 +2,14 @@ syntax = "proto3";
 
 package meshtastic;
 
+import "nanopb.proto";
+
 option csharp_namespace = "Meshtastic.Protobufs";
 option go_package = "github.com/meshtastic/go/generated";
 option java_outer_classname = "X3dhPayloadProtos";
 option java_package = "org.meshtastic.proto";
 option swift_prefix = "";
+option (nanopb_fileopt).include = "<vector>";
 
 message OneTimePreKey {
     
