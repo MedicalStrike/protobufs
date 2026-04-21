@@ -21,15 +21,20 @@ message X3DHMessage {
 }
 
 enum X3DHMessageType {
+    /*
+     * Init type for checks
+     */
+    NOT_SET = 0;
+
      /*
      * Request pre-key bundle form client or server
      */
-    REQUEST_BUNDLE = 0;
+    REQUEST_BUNDLE = 1;
 
     /*
      * Answer with pre-key bundle
      */
-    RESPONSE_BUNDLE = 1;
+    RESPONSE_BUNDLE = 2;
 
     /*
      * Answer with device id holding client pre-key bundles
