@@ -1,4 +1,22 @@
 # options for nanopb
 # https://jpa.kapsi.fi/nanopb/docs/reference.html#proto-file-options
 
-*X3DHMessage.payload max_size:210
+*OneTimePreKey.key                          max_size:32 fixed_length:true
+
+*X3DHMessage.identity_key                   max_size:32 fixed_length:true
+*X3DHMessage.signed_pre_key                 max_size:32 fixed_length:true
+*X3DHMessage.pre_key_signature              max_size:64 fixed_length:true
+
+*X3DHMessage.one_time_pre_keys              max_count:4
+
+*X3DHMessage.ephermal_key                   max_size:32 fixed_length:true
+*X3DHMessage.initial_cyphertext             max_size:180
+
+*PreKeyStorage.identity_key                 max_size:32 fixed_length:true
+*PreKeyStorage.signed_pre_key               max_size:32 fixed_length:true
+*PreKeyStorage.pre_key_signature            max_size:64 fixed_length:true
+*PreKeyStorage.one_time_pre_keys            callback_datatype:"std::vector<meshtastic_OneTimePreKey>"
+
+*X3DHNodeInfo.x3dh_shared_key               max_size:32 fixed_length:true
+
+*X3DHStateDB.node_info                      callback_datatype:"std::vector<meshtastic_X3DHNodeInfo>"

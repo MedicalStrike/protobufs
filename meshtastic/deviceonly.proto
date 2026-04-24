@@ -99,17 +99,6 @@ message UserLite {
    * Whether or not the node can be messaged
    */
   optional bool is_unmessagable = 9;
-
-  /*
-   * The shared, 32-byte secret for direct messages, derived from X3DH
-   * Not filled when not including the X3DH-module, therefore taking no storage and being reverse compatible
-   */
-  optional bytes x3dh_shared_key = 10;
-
-  /*
-   * The current state of the X3DH-agreement
-   */
-  optional X3DHState x3dh_state = 11;
 }
 
 message NodeInfoLite {
