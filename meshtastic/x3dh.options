@@ -11,6 +11,7 @@
 
 *X3DHMessage.ephermal_key                   max_size:32 fixed_length:true
 *X3DHMessage.initial_cyphertext             max_size:180
+*X3DHMessage.nonce                          max_size:4 fixed_length:true
 
 *PreKeyStorage.identity_key                 max_size:32 fixed_length:true
 *PreKeyStorage.signed_pre_key               max_size:32 fixed_length:true

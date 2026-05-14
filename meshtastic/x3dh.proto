@@ -77,9 +77,14 @@ message X3DHMessage {
     optional bytes initial_cyphertext = 10;
 
     /*
+     * Nonce for initial cyphertext
+     */
+    optional bytes nonce = 11;
+
+    /*
      * Multiple one-time pre-keys, amount only limited by the available size per mesh packet
      */
-    repeated OneTimePreKey one_time_pre_keys = 11;
+    repeated OneTimePreKey one_time_pre_keys = 12;
 }
 
 enum X3DHMessageType {
