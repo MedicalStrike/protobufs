@@ -16,3 +16,4 @@
 *UserLite.short_name max_size:5
 *UserLite.public_key max_size:32 # public key
 *UserLite.macaddr max_size:6 fixed_length:true
+*UserLite.x3dh_shared_key max_size:32 # shared aes key
